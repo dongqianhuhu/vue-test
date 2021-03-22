@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="源码资本">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <% if (htmlWebpackPlugin.options.title) {%>
+  <title>
+    <%- htmlWebpackPlugin.options.title %>
+  </title>
+  <%} else {%>
+  <title></title>
+  <%}%>
+  <style>
+    body {
+      font-family: -apple-system;
+    }
+  </style>
+  <script>
+    (function () {
+      function setRfs() {
+        var designWidth = 750,
+          rem2px = 100;
+        document.documentElement.style.fontSize = Math.min(55.2, Math.max(window.innerWidth / designWidth * rem2px,
+          document.documentElement.clientWidth / designWidth * rem2px, 42.67)) + "px"
+      }
+      setRfs()
+      var tid
+      window.addEventListener('resize', function () {
+        clearTimeout(tid)
+        tid = setTimeout(setRfs, 100)
+      }, false)
+    })()
+  </script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+
+</html>

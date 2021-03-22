@@ -1,0 +1,37 @@
+version: 1.0
+project_type: node
+
+deps:
+  - vim
+
+variables:
+  DIST_PATH: dist/
+
+build:test:
+  image: node:12.13.1
+  variables:
+    BUILD_ENV: test
+  script:
+    - npm install
+    - npm run build:$BUILD_ENV
+  artifacts:
+    paths:
+      - $DIST_PATH
+
+
+build:online:
+  image: node:12.13.1
+  only:
+    - online
+  variables:
+    BUILD_ENV: online
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - $DIST_PATH
+
+
+sonar:
+  enable: false
